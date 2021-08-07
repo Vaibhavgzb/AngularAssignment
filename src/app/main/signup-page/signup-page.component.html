@@ -1,0 +1,52 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>Sign up</h2>
+                <form [formGroup]="signupForm" autocomplete="off" (ngSubmit)="singUp()">
+                    <div class="form-group">
+                        <label>Fullname</label>
+                        <input type="text" class="form-control" formControlName="fullName" placeholder="Fullname"
+                        [ngClass]=" {'is-invalid' :  submitted && f.fullName.errors}">
+                        <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+                            <div *ngIf="f.fullName.errors.required">Fullname is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" formControlName="email" placeholder="Email"
+                        [ngClass]=" {'is-invalid' :  submitted && f.email.errors}">
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email is invalid</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="text" class="form-control" formControlName="password" placeholder="Password"
+                        [ngClass]=" {'is-invalid' :  submitted && f.password.errors}">
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="text" class="form-control" formControlName="confirmPassword" placeholder="Confirm password"
+                        [ngClass]=" {'is-invalid' :  submitted && f.confirmPassword.errors}">
+                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="f.confirmPassword.errors.required">ConfirmPassword is required</div>
+                            <div *ngIf="f.confirmPassword.errors.mustMatch">Password must match</div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Sign Up</button>
+                    </div>
+                </form>
+                <div class="form-group">
+                    <a routerLink="/login"><button class="btn btn-warning">Go to Login Form</button></a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

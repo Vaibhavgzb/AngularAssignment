@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" [@EnterLeave] >
+          <app-create-user [empData]="empDetail" (onClick)="updateEmployee($event)"></app-create-user>
+        </div>
+    <!-- </div>
+    <div class="row"> -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+              [(ngModel)]="searchText" placeholder="Enter name to search" 
+              autofocus>
+          </div>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Salary</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of employeesData | appFilter : searchText" [@fadeInOut]>          
+                    <th scope="row">{{data?.id}}</th>
+                    <td>{{data?.employee_name}}</td>
+                    <td>{{data?.employee_age}}</td>
+                    <td>{{data?.employee_salary}}</td>
+                  <td>
+                    <button class="btn btn-warning btn-lg" (click)="getEmployeeDetail(data)">Edit</button>
+                  </td>
+                  <td>
+                    <button class="btn btn-danger btn-lg" (click)="deleteEmployee(data?.id)">Delete</button>
+                  </td>
+                </tr>
+
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+<!-- </div> -->

@@ -1,0 +1,44 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>Employe detail <span class="text-danger" *ngIf="edit">(# {{this.empData?.id}})</span></h2>
+                <hr>
+                <form [formGroup]="employeeDetailForm">
+                    <div class="form-group">
+                        <label for="employeename">Employee Name</label>
+                        <input type="text" class="form-control" placeholder="Employee Name"
+                        formControlName="employeeName"
+                        [ngClass]="{'is-invalid' : submitted && f.employeeName.errors}">
+                        <div *ngIf="submitted && f.employeeName.errors" class="invalid-feedback" [@fadeInOut]>
+                            <div *ngIf="f.employeeName.errors?.required">Employee Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="employeeage">Employee Age</label>
+                        <input type="text" class="form-control" placeholder="Employee Age"
+                        formControlName="employeeAge"
+                        [ngClass]="{'is-invalid' : submitted && f.employeeAge.errors}">
+                        <div *ngIf="submitted && f.employeeAge.errors" class="invalid-feedback" [@fadeInOut]>
+                            <div *ngIf="f.employeeAge.errors?.required">Employee Age is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="employeesalary">Employee Salary</label>
+                        <input type="text" class="form-control" placeholder="Employee Salary"
+                        formControlName="employeeSalary"
+                        [ngClass]="{'is-invalid' : submitted && f.employeeSalary.errors}">
+                        <div *ngIf="submitted && f.employeeSalary.errors" class="invalid-feedback" [@fadeInOut]>
+                            <div *ngIf="f.employeeSalary.errors?.required">Employee Salary is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" *ngIf="!edit" (click)="addEmployee()">Add Employee</button>
+                        <button class="btn btn-primary" *ngIf="edit" (click)="onClick.emit(this.employeeDetailForm.value)">Update Employee</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

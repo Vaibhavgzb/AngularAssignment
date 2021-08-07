@@ -1,0 +1,7 @@
+<div *ngIf="this.logged">
+    <app-nav-bar (onClick)="logout($event)"></app-nav-bar>
+</div>
+<router-outlet></router-outlet>
+<div *ngFor="let msg of message">
+    {{msg.text}}    
+</div>

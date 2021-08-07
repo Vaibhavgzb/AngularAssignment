@@ -1,0 +1,35 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>Login</h2>
+                <form [formGroup]="loginform" (ngSubmit)="login()">
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control"  autocomplete="username" placeholder="Enter email" formControlName="email"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email is invalid</div>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control"  autocomplete="new-password" placeholder="Password" formControlName="password"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <button  class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+                <div class="form-group">
+                    <a routerLink="/signup"><button class="btn btn-warning">Go to Sign up form</button></a> 
+                </div>
+            </div>  
+        </div>
+    </div>  
+</div>
